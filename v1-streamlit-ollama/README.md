@@ -8,13 +8,7 @@
 
 ## What It Does
 
-Upload any research paper PDF and ask questions about it in plain English. Get precise, page-cited answers based only on what the paper actually says — not hallucinated summaries.
-
-```
-You:   "What statistical methods did they use?"
-App:   "According to Page 4, the authors applied
-        survival analysis and semi-supervised clustering..."
-```
+Upload any research paper PDF and ask questions about it in plain English. Get precise, page-cited answers based only on what the paper actually says.
 
 ---
 
@@ -72,13 +66,12 @@ Browser (Streamlit UI)
 # Step 1: Install Ollama
 brew install --cask ollama
 
-# Open the Ollama app from Applications
-# It will appear in your menu bar
+# Open the Ollama app 
 
-# Step 2: Pull the model (first time only, ~2GB download)
+# Step 2: Pull the model llama3.2
 ollama pull llama3.2
 
-# Step 3: Clone / download this project
+# Step 3: Clone this project
 cd v1-streamlit-ollama
 
 # Step 4: Create virtual environment
@@ -92,7 +85,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Open your browser at **http://localhost:8501**
+Open browser at **http://localhost:8501**
 
 ---
 
@@ -117,21 +110,5 @@ Open your browser at **http://localhost:8501**
 5. Only those 5 chunks + your question are sent to Llama 3.2
 6. The model answers using only what's in those chunks
 
-This means answers are **grounded in the paper**, not invented.
-
 ---
 
-## Limitations
-
-- **Local model quality** — Llama 3.2 (3B parameters) is good but not as capable as larger models. Answers on complex papers may be simpler than you'd like.
-- **RAM requirement** — Llama 3.2 needs ~4GB RAM. On machines with less, try `ollama pull llama3.2:1b` (smaller variant).
-- **In-memory only** — ChromaDB resets when you restart the app. Re-upload your PDF each session.
-- **Not deployable as-is** — Ollama can't run on cloud free tiers (1GB RAM). See [v3](../v3-fastapi-groq-aws) for cloud deployment.
-
----
-
-## Upgrading
-
-- **Better answers** → pull a larger model: `ollama pull llama3.1:8b`
-- **Web frontend** → see [v2](../v2-fastapi-html-ollama)
-- **Deploy to cloud** → see [v3](../v3-fastapi-groq-aws)
