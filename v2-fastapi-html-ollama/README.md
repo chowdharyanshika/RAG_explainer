@@ -1,25 +1,10 @@
 # 📚 RAG Paper Explainer — v2: FastAPI + HTML + Ollama
 
-**Version 2 of 3** — replaces the Streamlit UI with a custom HTML/CSS/JS frontend and a FastAPI backend, while keeping Ollama as the local LLM.
-
-> See also: [v1 — Streamlit + Ollama](../v1-streamlit-ollama) · [v3 — FastAPI + Groq + AWS](../v3-fastapi-groq-aws)
+**Version 2 of 3** — HTML/CSS/JS frontend and a FastAPI backend with Ollama as the local LLM.
 
 ---
 
-## What Changed from v1
 
-| | v1 Streamlit | v2 FastAPI + HTML |
-|---|---|---|
-| Frontend | Streamlit components | Custom HTML/CSS/JS |
-| Backend | Streamlit server | FastAPI REST API |
-| UI flexibility | Limited | Full control |
-| API access | No | Yes — `/upload` and `/ask` |
-| Deployable | Local only | Local only (Ollama constraint) |
-| LLM | Ollama (local) | Ollama (local) |
-
-The main reason to move from Streamlit to FastAPI + HTML is **control**: you own the entire frontend, can style it however you want, and expose proper REST endpoints that other services could call.
-
----
 
 ## Architecture
 
@@ -80,7 +65,7 @@ v2-fastapi-html-ollama/
 # Install Ollama
 brew install --cask ollama
 
-# Pull model (first time only)
+# Pull model 
 ollama pull llama3.2
 ```
 
@@ -157,14 +142,4 @@ Ask a question about the loaded paper.
 
 ---
 
-## Limitations
 
-- **Ollama not cloud-deployable on free tier** — t2.micro (1GB RAM) can't run Llama 3.2 (needs ~4GB). For cloud deployment, see [v3](../v3-fastapi-groq-aws).
-- **Single paper** — one paper loaded globally. Multiple users would overwrite each other's paper.
-- **In-memory** — ChromaDB resets on server restart.
-
----
-
-## Upgrading
-
-- **Deploy to cloud** → see [v3](../v3-fastapi-groq-aws) — swaps Ollama for Groq and deploys to AWS EC2
