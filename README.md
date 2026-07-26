@@ -1,6 +1,6 @@
 # 📚 RAG Paper Explainer — Three Versions
 
-A Retrieval-Augmented Generation (RAG) system that lets you upload any academic PDF and ask questions about it in plain English. Built in three progressive versions, each adding production capability.
+A Retrieval-Augmented Generation (RAG) system that lets you upload any academic PDF and ask questions about it in plain English. Built in three versions.
 
 ---
 
@@ -22,14 +22,14 @@ A Retrieval-Augmented Generation (RAG) system that lets you upload any academic 
 ## Which Version to Use
 
 ```
-Just want to run it locally and test?
-→ Start with v1 (simplest setup)
+To run it locally and test:
+→ v1 
 
-Want to see the FastAPI + HTML pattern?
-→ Use v2 (same local setup, better architecture)
+With FastAPI + HTML pattern:
+→  v2 
 
-Want a live public URL on AWS for your portfolio?
-→ Use v3 (Groq API + EC2 deployment)
+With cloud  AWS:
+→  v3 (Groq API + EC2 deployment)
 ```
 
 ---
