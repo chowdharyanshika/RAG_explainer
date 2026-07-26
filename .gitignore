@@ -1,0 +1,22 @@
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Virtual environments in subfolders
+v1-streamlit-ollama/venv/
+v2-fastapi-html-ollama/venv/
+v3-fastapi-groq-aws/venv/
+
+# No API keys or secrets
+.env
+*.env
+
+# Mac OS
+.DS_Store
+
+# nohup logs
+nohup.out
