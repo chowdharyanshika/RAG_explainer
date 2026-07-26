@@ -20,3 +20,4 @@ v3-fastapi-groq-aws/venv/
 
 # nohup logs
 nohup.out
+*.pem
