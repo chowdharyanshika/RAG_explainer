@@ -1,13 +1,9 @@
 # 📚 RAG Paper Explainer — v3: FastAPI + Groq + AWS EC2
 
-**Version 3 of 3** — production-ready. Replaces Ollama with Groq's free API (Llama 3.3 70B) enabling deployment on AWS EC2 free tier.
+**Version 3 of 3** —  enabling deployment on AWS EC2 free tier.
 
-> See also: [v1 — Streamlit + Ollama](../v1-streamlit-ollama) · [v2 — FastAPI + HTML + Ollama](../v2-fastapi-html-ollama)
 
 ---
-
-## What Changed from v2
-
 | | v2 FastAPI + Ollama | v3 FastAPI + Groq + AWS |
 |---|---|---|
 | LLM | Ollama (local, 4GB RAM) | Groq API (free, cloud) |
@@ -138,10 +134,10 @@ Network settings → Edit:
 ### 3b. Connect to Your Instance
 
 ```bash
-# On your Mac:
+# On  PC:
 chmod 400 ~/Downloads/your-key.pem
 
-ssh -i ~/Downloads/your-key.pem ubuntu@YOUR-EC2-PUBLIC-IP
+ssh -i ~/Downloads/your-key.pem ubuntu@EC2-PUBLIC-IP
 ```
 
 Find your public IP in: EC2 Console → Instances → your instance → Public IPv4 address
@@ -158,10 +154,10 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-### 3d. Upload Your Files
+### 3d. Upload  Files
 
 ```bash
-# On your Mac (open a new terminal window):
+Open a  terminal window:
 cd path/to/v3-fastapi-groq-aws
 
 scp -i ~/Downloads/your-key.pem \
@@ -180,14 +176,14 @@ cd ~/rag-app
 source venv/bin/activate
 pip install -r requirements.txt
 
-# Run in background — keeps running after you close SSH
+# Run in background 
 nohup uvicorn main:app --host 0.0.0.0 --port 8000 &
 
 # Verify it's running:
 curl http://localhost:8000/health
 ```
 
-### 3f. Access Your Live App
+### 3f. Access  Live App
 
 ```
 Open in browser:
@@ -296,24 +292,6 @@ To avoid surprise charges:
 
 ---
 
-## Limitations
-
-- **In-memory ChromaDB** — paper resets when server restarts. Users must re-upload.
-- **Single paper globally** — current implementation stores one paper per API key. Multiple simultaneous users with different PDFs could conflict.
-- **Groq rate limit** — 1,000 requests/day on free tier.
-- **HTTP not HTTPS** — for a production app you'd add a domain + SSL certificate (via Let's Encrypt + nginx). For a portfolio demo, HTTP is fine.
-
----
-
-## Possible Extensions
-
-- [ ] Persistent ChromaDB — save to disk so papers survive restarts
-- [ ] nginx reverse proxy + SSL — proper HTTPS with a domain name
-- [ ] Multi-paper support — index multiple papers, query across all
-- [ ] Streaming responses — stream the answer token by token
-- [ ] Docker deployment — containerise for reproducibility
-
----
 
 ## Related Projects
 
